@@ -32,6 +32,12 @@ public class User extends BaseEntity implements UserDetails {
         return null;
     }
 
+    public User(String email, String name, String password) {
+        this.email = email;
+        this.name = name;
+        this.password = password;
+    }
+
     @Override
     public String getUsername() {
         return null;
