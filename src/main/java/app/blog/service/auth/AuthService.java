@@ -3,12 +3,14 @@ package app.blog.service.auth;
 import app.blog.model.user.User;
 import app.blog.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AuthService {
+public class AuthService implements UserDetailsService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -25,4 +27,12 @@ public class AuthService {
         return userRepository.findByEmail(email)!=null;
     }
 
+    @Override
+    public UserDetails loadUserByUsername(String email) {
+        return (User) userRepository.findByEmail(email);
+    }
+
+    public Boolean isPasswordMatched(String password, String currentPassword){
+        return passwordEncoder.matches(password, currentPassword);
+    }
 }
