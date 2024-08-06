@@ -37,8 +37,11 @@ public class AuthController {
     private TokenProvider tokenService;
 
     @PostMapping("/sign-up")
-    public ResponseEntity<?> signUp(@RequestBody @Valid SignUpRequest data) throws Exception {
-
+    public ResponseEntity<?> signUp(@RequestBody(required = false) @Valid SignUpRequest data) throws Exception {
+        if (data == null) {
+            throw new BadRequestException("Request body is missing", "invalid request", HttpStatus.BAD_REQUEST,
+                    "email, name and password");
+        }
         User user =  new User( data.getEmail(),data.getName(), data.getPassword());
         if(authService.isUserExist(user.getEmail())){
             throw new DuplicateObjectExceptions("email has been registered",
