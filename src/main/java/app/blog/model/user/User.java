@@ -2,6 +2,7 @@ package app.blog.model.user;
 
 import app.blog.model.base.BaseEntity;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Index;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name = "users")
+@Table(name = "users", indexes = @Index(name = "idx_email", columnList = "email"))
 public class User extends BaseEntity implements UserDetails {
     private String email;
 
