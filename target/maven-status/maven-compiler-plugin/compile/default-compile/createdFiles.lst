@@ -10,7 +10,7 @@ app/blog/model/exceptions/DuplicateObjectExceptions.class
 app/blog/model/base/BaseEntity.class
 app/blog/model/user/dto/SignInResponse.class
 app/blog/model/exceptions/BadRequestException.class
-app/blog/controller/content/BlogController.class
+app/blog/controller/content/PostController.class
 app/blog/service/content/PostServiceImpl.class
 app/blog/controller/AuthController.class
 app/blog/model/GenericResponse.class
@@ -24,6 +24,7 @@ app/blog/model/ErrorResponse.class
 app/blog/config/AuthConfig.class
 app/blog/model/exceptions/GenericException.class
 app/blog/model/user/dto/SignInRequest.class
+app/blog/service/BaseService.class
 app/blog/model/user/User.class
 app/blog/config/auth/SecurityFilter.class
 app/blog/model/user/dto/SignUpRequest.class
