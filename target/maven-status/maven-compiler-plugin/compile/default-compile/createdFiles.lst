@@ -1,6 +1,7 @@
 app/blog/service/auth/AuthenticationFacade.class
 app/blog/model/user/dto/SignInRequest$SignInRequestBuilder.class
 app/blog/controller/base/BaseController.class
+app/blog/model/content/Post.class
 app/blog/repository/UserRepository.class
 app/blog/config/GlobalExceptionHandler.class
 app/blog/annotation/UpperCase.class
@@ -9,11 +10,15 @@ app/blog/model/exceptions/DuplicateObjectExceptions.class
 app/blog/model/base/BaseEntity.class
 app/blog/model/user/dto/SignInResponse.class
 app/blog/model/exceptions/BadRequestException.class
+app/blog/controller/content/BlogController.class
+app/blog/service/content/PostServiceImpl.class
 app/blog/controller/AuthController.class
 app/blog/model/GenericResponse.class
+app/blog/service/content/PostService.class
 app/blog/BlogApplication.class
 app/blog/annotation/PasswordUpperCaseValidator.class
 app/blog/service/auth/AuthService.class
+app/blog/repository/content/PostRepository.class
 app/blog/service/auth/IAuthenticationFacade.class
 app/blog/model/ErrorResponse.class
 app/blog/config/AuthConfig.class
