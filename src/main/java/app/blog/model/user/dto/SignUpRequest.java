@@ -20,7 +20,7 @@ public class SignUpRequest {
 
     @NotBlank(message="This field should not be empty.")
     @Size(min = 6, max = 50)
-    private String name;
+    private String username;
 
 
     @NotBlank(message= "This field should not be empty.")
