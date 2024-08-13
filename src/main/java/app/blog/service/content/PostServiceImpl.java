@@ -1,6 +1,7 @@
 package app.blog.service.content;
 
 import app.blog.model.content.Post;
+import app.blog.model.content.dto.PostResponse;
 import app.blog.repository.content.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ public class PostServiceImpl implements PostService<Post>{
 
     @Override
     public void save(Post post) {
-
+        postRepository.save(post);
     }
 
     @Override
@@ -30,7 +31,7 @@ public class PostServiceImpl implements PostService<Post>{
     }
 
     @Override
-    public List<Post> findAll(){
-        return postRepository.findAll();
+    public List<PostResponse> findAll(){
+        return postRepository.findAllPosts();
     }
 }

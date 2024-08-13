@@ -10,10 +10,12 @@ app/blog/model/exceptions/DuplicateObjectExceptions.class
 app/blog/model/base/BaseEntity.class
 app/blog/model/user/dto/SignInResponse.class
 app/blog/model/exceptions/BadRequestException.class
+app/blog/model/content/dto/SavePostRequest.class
 app/blog/controller/content/PostController.class
 app/blog/service/content/PostServiceImpl.class
 app/blog/controller/AuthController.class
 app/blog/model/GenericResponse.class
+app/blog/model/content/dto/PostResponse.class
 app/blog/service/content/PostService.class
 app/blog/BlogApplication.class
 app/blog/annotation/PasswordUpperCaseValidator.class

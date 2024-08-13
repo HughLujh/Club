@@ -13,10 +13,12 @@
 /Users/JiahaoLU/Documents/GitHub/blog-backend/src/main/java/app/blog/model/ErrorResponse.java
 /Users/JiahaoLU/Documents/GitHub/blog-backend/src/main/java/app/blog/BlogApplication.java
 /Users/JiahaoLU/Documents/GitHub/blog-backend/src/main/java/app/blog/config/GlobalExceptionHandler.java
+/Users/JiahaoLU/Documents/GitHub/blog-backend/src/main/java/app/blog/model/content/dto/SavePostRequest.java
 /Users/JiahaoLU/Documents/GitHub/blog-backend/src/main/java/app/blog/model/base/BaseEntity.java
 /Users/JiahaoLU/Documents/GitHub/blog-backend/src/main/java/app/blog/controller/base/BaseController.java
 /Users/JiahaoLU/Documents/GitHub/blog-backend/src/main/java/app/blog/config/auth/SecurityFilter.java
 /Users/JiahaoLU/Documents/GitHub/blog-backend/src/main/java/app/blog/service/auth/IAuthenticationFacade.java
+/Users/JiahaoLU/Documents/GitHub/blog-backend/src/main/java/app/blog/model/content/dto/PostResponse.java
 /Users/JiahaoLU/Documents/GitHub/blog-backend/src/main/java/app/blog/model/user/dto/SignUpRequest.java
 /Users/JiahaoLU/Documents/GitHub/blog-backend/src/main/java/app/blog/model/exceptions/BadRequestException.java
 /Users/JiahaoLU/Documents/GitHub/blog-backend/src/main/java/app/blog/controller/content/PostController.java

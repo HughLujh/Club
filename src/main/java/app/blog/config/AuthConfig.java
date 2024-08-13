@@ -35,7 +35,7 @@ public class AuthConfig {
                         .requestMatchers("/").permitAll()
                         .requestMatchers(HttpMethod.POST, "/sign-in").permitAll()
                         .requestMatchers(HttpMethod.POST, "/sign-up").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/posts").permitAll()
+                        .requestMatchers("/posts").permitAll()
                         .anyRequest().authenticated())
                 .cors(cors -> cors.configurationSource(request -> {
                     var corsConfiguration = new CorsConfiguration();
