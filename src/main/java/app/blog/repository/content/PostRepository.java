@@ -12,7 +12,7 @@ import java.util.Optional;
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
     Optional<Post> findById(Long id);
-    @Query("SELECT new app.blog.model.content.dto.PostResponse(p.id, p.createdAt, p.summary, p.content) " +
+    @Query("SELECT new app.blog.model.content.dto.PostResponse(p.id,p.createdAt, p.title, p.summary, p.content) " +
             "FROM Post p WHERE p.deletedAt IS NULL")
     List<PostResponse> findAllPosts();
 }

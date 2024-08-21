@@ -12,6 +12,7 @@ import java.time.Instant;
 public class PostResponse {
     private Long id;
     private Instant createdAt;
+    private String title;
     private String summary;
     private String content;
 }
