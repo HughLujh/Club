@@ -1,11 +1,13 @@
 spring :
+  config:
+    import: application-secrets.yml
   datasource :
     url : jdbc:postgresql://localhost:5432/blog
     hikari :
       minimumIdle : 20
       maximumPoolSize : 30
       connectionTimeout : 5000
-    username: postgres
-    password: postgres
+    username: ${spring.database.username}
+    password: ${spring.database.password}
 baseurl : http://localhost:8080
 redirectUri : http://localhost:8080

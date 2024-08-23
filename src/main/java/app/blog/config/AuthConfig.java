@@ -1,7 +1,9 @@
 package app.blog.config;
 
 import app.blog.config.auth.SecurityFilter;
+import app.blog.config.property.EmailProperty;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -22,6 +24,7 @@ import java.util.List;
 
 @Configuration
 @EnableWebSecurity
+@EnableConfigurationProperties(EmailProperty.class)
 public class AuthConfig {
     @Autowired
     SecurityFilter securityFilter;

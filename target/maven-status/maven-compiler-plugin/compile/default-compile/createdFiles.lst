@@ -3,7 +3,7 @@ app/blog/model/user/dto/SignInRequest$SignInRequestBuilder.class
 app/blog/controller/base/BaseController.class
 app/blog/model/contact/Contact.class
 app/blog/model/content/Post.class
-app/blog/service/email/EmailService.class
+app/blog/service/contact/EmailServiceImpl.class
 app/blog/repository/UserRepository.class
 app/blog/config/GlobalExceptionHandler.class
 app/blog/annotation/UpperCase.class
@@ -12,7 +12,6 @@ app/blog/model/exceptions/DuplicateObjectExceptions.class
 app/blog/model/base/BaseEntity.class
 app/blog/model/user/dto/SignInResponse.class
 app/blog/model/exceptions/BadRequestException.class
-app/blog/service/email/EmailServiceImpl.class
 app/blog/model/content/dto/SavePostRequest.class
 app/blog/controller/contact/ContactController.class
 app/blog/controller/content/PostController.class
@@ -28,9 +27,11 @@ app/blog/model/contact/EmailProperties.class
 app/blog/service/auth/AuthService.class
 app/blog/repository/content/PostRepository.class
 app/blog/service/auth/IAuthenticationFacade.class
+app/blog/config/property/EmailProperty.class
 app/blog/model/ErrorResponse.class
 app/blog/config/AuthConfig.class
 app/blog/model/exceptions/GenericException.class
+app/blog/service/contact/EmailService.class
 app/blog/model/user/dto/SignInRequest.class
 app/blog/service/BaseService.class
 app/blog/model/user/User.class

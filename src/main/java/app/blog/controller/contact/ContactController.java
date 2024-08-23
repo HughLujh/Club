@@ -2,7 +2,7 @@ package app.blog.controller.contact;
 
 import app.blog.controller.base.BaseController;
 import app.blog.model.contact.Contact;
-import app.blog.service.email.EmailService;
+import app.blog.service.contact.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

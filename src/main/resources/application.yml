@@ -1,6 +1,8 @@
 spring :
   profiles :
     active : dev
+  config:
+    import: application-secrets.yml
   datasource :
     hikari:
       auto-commit : true
@@ -19,19 +21,16 @@ spring :
   mail:
     host: smtp.gmail.com
     port: 587
-    username: langen2023@gmail.com
-    password: "wnxchqguuinkzoqx"
+    username: ${spring.mail.username}
+    password: ${spring.mail.password}
     properties:
       mail:
         smtp:
           auth: true
           starttls:
             enable: true
-email:
-  classifications:
-    tech:
-      - hughlujh2023@gmail.com
-    general:
-      - general1@example.com
-    support:
-      - support1@example.com
+  email:
+    classifications:
+      tech: ${email.classifications.tech}
+      general: ${email.classifications.general}
+      support: ${email.classifications.support}
