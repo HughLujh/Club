@@ -45,7 +45,7 @@ public class EmailServiceImpl implements EmailService<Contact>{
                 System.out.println("No tech recipients found.");
             }
         } else {
-            System.out.println("Email classifications is null.");
+            System.out.println("Email classifications map is null.");
         }
         message.setFrom(adminEmail);
         message.setSubject(contact.getSubject());
