@@ -6,7 +6,7 @@ target/
 
 ### Environmental variables
 .env
-./src/main/resources/application-secrets.yml
+src/main/resources/application-secrets.yml
 
 ### STS ###
 .apt_generated
