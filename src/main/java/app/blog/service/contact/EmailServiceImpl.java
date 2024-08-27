@@ -47,9 +47,11 @@ public class EmailServiceImpl implements EmailService<Contact>{
         } else {
             System.out.println("Email classifications map is null.");
         }
+        String messageBody = "From " + contact.getEmail() + " \n\n"+contact.getMessage();
+
         message.setFrom(adminEmail);
         message.setSubject(contact.getSubject());
-        message.setText(contact.getMessage());
+        message.setText(messageBody);
         mailSender.send(message);
     }
 }
