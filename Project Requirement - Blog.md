@@ -6,7 +6,7 @@ A brief description of the project's purpose and background.
 
 ## 2. User-Related Interface
 
-### 2.1 User Sign up
+### 2.1 User Sign-up
 
 #### 2.1.1 Basic Description
 
@@ -20,19 +20,19 @@ A brief description of the project's purpose and background.
 
 - Request Parameter Description:
 
-| Parameter Name | Description | Type   | Required | Remark                                                       |
-| :------------- | :---------- | ------ | -------- | ------------------------------------------------------------ |
-| email          |             | string | Yes      | must meet email format                                       |
-| username       |             | string | Yes      | This field should not be empty.                              |
-| password       |             | string | Yes      | Password should have minimal 8 alphanumeric character and at leash 1 upper letter. |
+| Parameter Name | Description                            | Type   | Required | Remark                                                       |
+| :------------- | :------------------------------------- | ------ | -------- | ------------------------------------------------------------ |
+| email          | Email must be unique   in the database | String | Yes      | must meet email format                                       |
+| username       |                                        | String | Yes      | This field should not be empty.                              |
+| password       |                                        | String | Yes      | Password should have a minimal 8 alphanumeric characters and at least 1 upper letter. |
 
 - Sample Request Data:
 
 ```json
 {
-    "email": "example@example.com",
-  	"username": "example@example.com",
-  	"password": !Mike123123
+  "email": "example@example.com",
+  "username": "example@example.com",
+	"password": "!Mike123123"
 }
 ```
 
@@ -42,10 +42,10 @@ A brief description of the project's purpose and background.
 
 - Response Details:
 
-| Parameter Name | Description | Type   | Required | Remark                                                       |
-| :------------- | :---------- | ------ | -------- | ------------------------------------------------------------ |
-| message        |             | string | Yes      | Password should have minimal 8 alphanumeric character and at leash 1 upper letter. |
-| errors         |             | list   | No       |                                                              |
+| Parameter Name | Description | Type   | Required | Remark |
+| :------------- | :---------- | ------ | -------- | ------ |
+| message        |             | String | Yes      |        |
+| errors         |             | List   | No       |        |
 
 - Sample Response Data:
 
@@ -59,7 +59,7 @@ A brief description of the project's purpose and background.
 {
     "message": "invalid request",
     "errors": {
-        "password": "Password should have minimal 8 alphanumeric character and at leash 1 upper letter.",
+        "password": "Password should have a minimal 8 alphanumeric characters and at least 1 upper letter.",
         "username": "This field should not be empty."
     }
 }
@@ -67,7 +67,7 @@ A brief description of the project's purpose and background.
 
 
 
-### 2.2 User Sign in
+### 2.2 User Sign-in
 
 #### 2.2.1 Basic Description
 
@@ -79,12 +79,12 @@ A brief description of the project's purpose and background.
 
 - Request Parameter Format: `application/json`
 
-- Request Parameter Description:
+- Request Parameter Details:
 
 | Parameter Name | Description | Type   | Required | Remark                                                       |
 | :------------- | :---------- | ------ | -------- | ------------------------------------------------------------ |
-| email          |             | string | Yes      | must meet email format                                       |
-| password       |             | string | Yes      | Password should have minimal 8 alphanumeric character and at leash 1 upper letter. |
+| email          |             | String | Yes      | Email must meet email format                                 |
+| password       |             | String | Yes      | Password should have a minimal 8 alphanumeric characters and at least 1 upper letter. |
 
 - Sample Request Data:
 
@@ -102,10 +102,10 @@ A brief description of the project's purpose and background.
 
 - Response Details:
 
-| Parameter Name | Description | Type   | Required | Remark                                                       |
-| :------------- | :---------- | ------ | -------- | ------------------------------------------------------------ |
-| message        |             | string | Yes      | Password should have minimal 8 alphanumeric character and at leash 1 upper letter. |
-| errors         |             | list   | No       |                                                              |
+| Parameter Name | Description | Type   | Required | Remark |
+| :------------- | :---------- | ------ | -------- | ------ |
+| message        |             | String | Yes      |        |
+| errors         |             | List   | No       |        |
 
 - Sample Response Data:
 
@@ -137,12 +137,12 @@ A brief description of the project's purpose and background.
 
 - Request Parameter Format: `application/json`
 
-- Request Parameter Description:
+- Request Parameter Details:
 
-| Parameter Name | Description | Type | Required | Remark |
-| :------------- | :---------- | ---- | -------- | ------ |
-|                |             |      |          |        |
-|                |             |      |          |        |
+| Parameter Name | Description                     | Type   | Required | Remark                                               |
+| :------------- | :------------------------------ | ------ | -------- | ---------------------------------------------------- |
+| refreshToken   | The refresh token to be revoked | String | No       | Required if using refresh tokens                     |
+| allDevices     | Sign out from all devices       | Bool   | No       | Optional flag to invalidate all tokens(if supported) |
 
 - Sample Request Data:
 
@@ -161,8 +161,8 @@ A brief description of the project's purpose and background.
 
 | Parameter Name | Description | Type   | Required | Remark |
 | :------------- | :---------- | ------ | -------- | ------ |
-| message        |             | string | Yes      |        |
-| errors         |             | list   | No       |        |
+| message        |             | String | Yes      |        |
+| errors         |             | List   | No       |        |
 
 - Sample Response Data:
 
@@ -205,8 +205,8 @@ A brief description of the project's purpose and background.
 
 | Parameter Name | Description | Type   | Required | Remark |
 | :------------- | :---------- | ------ | -------- | ------ |
-| message        |             | string | Yes      |        |
-| errors         |             | list   | No       |        |
+| message        |             | String | Yes      |        |
+| errors         |             | List   | No       |        |
 
 - Sample Response Data:
 
@@ -232,9 +232,8 @@ A brief description of the project's purpose and background.
 
 | Parameter Name | Description | Type   | Required | Remark |
 | :------------- | :---------- | ------ | -------- | ------ |
-| username       |             | string | No       |        |
-| imageUrl       |             | string | No       |        |
-|                |             |        |          |        |
+| username       |             | String | No       |        |
+| imageUrl       |             | String | No       |        |
 
 - Sample Request Data:
 
@@ -250,8 +249,8 @@ A brief description of the project's purpose and background.
 
 | Parameter Name | Description | Type   | Required | Remark |
 | :------------- | :---------- | ------ | -------- | ------ |
-| message        |             | string | Yes      |        |
-| errors         |             | list   | No       |        |
+| message        |             | String | Yes      |        |
+| errors         |             | List   | No       |        |
 
 - Sample Response Data:
 
@@ -294,8 +293,8 @@ A brief description of the project's purpose and background.
 
 | Parameter Name | Description | Type   | Required | Remark |
 | :------------- | :---------- | ------ | -------- | ------ |
-| message        |             | string | Yes      |        |
-| errors         |             | list   | No       |        |
+| message        |             | String | Yes      |        |
+| errors         |             | List   | No       |        |
 
 - Sample Response Data:
 
@@ -307,7 +306,7 @@ A brief description of the project's purpose and background.
 
 ## 3. Post-Related Interface
 
-### 3.1 TODO - Create new post category
+### 3.1 TODO - Create a new post category
 
 #### 3.1.1 Basic Information
 
@@ -320,15 +319,18 @@ A brief description of the project's purpose and background.
 - Request Parameter Format: `application/json`
 - Request Parameter Details:
 
-| Parameter Name | Description | Type | Required | Remark |
-| -------------- | ----------- | ---- | -------- | ------ |
-|                |             |      |          |        |
-|                |             |      |          |        |
-|                |             |      |          |        |
+| Parameter Name | Description         | Type   | Required | Remark |
+| -------------- | ------------------- | ------ | -------- | ------ |
+| categoryName   | category name       | String | Yes      |        |
+| categoryAlias  | category alias name | String | Yes      |        |
 
 - Sample Request Data:
 
 ```json
+{
+  "categoryName": "Java",
+  "categoryAlias" "SpringBoot"
+}
 ```
 
 #### 3.1.3 Response Data:
@@ -338,8 +340,8 @@ A brief description of the project's purpose and background.
 
 | Parameter Name | Description | Type   | Required | Remark |
 | :------------- | :---------- | ------ | -------- | ------ |
-| message        |             | string | Yes      |        |
-| errors         |             | list   | No       |        |
+| message        |             | String | Yes      |        |
+| errors         |             | List   | No       |        |
 
 - Sample Response Data:
 
