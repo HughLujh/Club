@@ -1,8 +1,9 @@
-package app.blog.service.content;
+package app.blog.service.content.impl;
 
 import app.blog.model.content.Post;
 import app.blog.model.content.dto.PostResponse;
 import app.blog.repository.content.PostRepository;
+import app.blog.service.content.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PostServiceImpl implements PostService<Post>{
+public class PostServiceImpl implements PostService<Post> {
 
     @Autowired
     private PostRepository postRepository;

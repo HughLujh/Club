@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class GetUserProfileResponse {
     private String email;
 
-    private String name;
+    private String username;
 
     private String imageUrl;
 }

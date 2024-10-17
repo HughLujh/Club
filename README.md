@@ -45,7 +45,7 @@ A brief description of the project's purpose and background.
 | Parameter Name | Description | Type   | Required | Remark |
 | :------------- | :---------- | ------ | -------- | ------ |
 | message        |             | String | Yes      |        |
-| errors         |             | List   | No       |        |
+| errors         |             | Object | No       |        |
 
 - Sample Response Data:
 
@@ -105,7 +105,7 @@ A brief description of the project's purpose and background.
 | Parameter Name | Description | Type   | Required | Remark |
 | :------------- | :---------- | ------ | -------- | ------ |
 | message        |             | String | Yes      |        |
-| errors         |             | List   | No       |        |
+| errors         |             | Object | No       |        |
 
 - Sample Response Data:
 
@@ -162,7 +162,7 @@ A brief description of the project's purpose and background.
 | Parameter Name | Description | Type   | Required | Remark |
 | :------------- | :---------- | ------ | -------- | ------ |
 | message        |             | String | Yes      |        |
-| errors         |             | List   | No       |        |
+| errors         |             | Object | No       |        |
 
 - Sample Response Data:
 
@@ -206,7 +206,7 @@ GET http://localhost:8080/user/profile?id=123
 | :------------- | :----------------------------------------------------------- | ------ | -------- | ------------------------------------------------------------ |
 | message        | A brief message indicating the success or failure of the request. | String | Yes      | E.g., "success" or "fail".                                   |
 | data           | Contains the relevant data returned upon a successful request. | Object | No       | Present only in successful responses, containing user details or other relevant data. |
-| errors         | A list of error messages encountered during processing in case of failure. | List   | No       | Present only in error responses to detail issues.            |
+| errors         | An object containing field-specific error messages encountered during processing in case of failure. | Object | No       | Present only in error responses to detail specific issues related to input fields.Present only in error responses to detail issues. |
 
 - Sample Response Data:
 
@@ -233,11 +233,11 @@ GET http://localhost:8080/user/profile?id=123
 
 ```
 
-### 2.5 TODO - Update User Basic Information
+### 2.5 Update User Basic Information
 
 #### 2.5.1 Basic Information
 
-- Request Path: `/user/update`
+- Request Path: `/user/profile`
 - Request Method: `PUT`
 - Interface Description: This interface is used for the user to update user basic information
 
@@ -247,15 +247,22 @@ GET http://localhost:8080/user/profile?id=123
 
 - Request Parameter Details:
 
-| Parameter Name | Description | Type   | Required | Remark |
-| :------------- | :---------- | ------ | -------- | ------ |
-| username       |             | String | No       |        |
-| imageUrl       |             | String | No       |        |
+| Parameter Name | Description                            | Type   | Required | Remark |
+| :------------- | :------------------------------------- | ------ | -------- | ------ |
+| id             | The unique identifier of the user.     | Long   | Yes      |        |
+| email          | Email must be unique   in the database | String | Yes      |        |
+| username       | Usernames can be same in the database  | String | Yes      |        |
+| image_url      |                                        | String | Yes      |        |
 
 - Sample Request Data:
 
 ```json
-
+{
+    "id": 2,
+    "email": "example@example.com",
+    "username": "121231233",
+    "image_url": "123123123.com"
+}
 ```
 
 #### 2.5.3 Response Data
@@ -264,15 +271,26 @@ GET http://localhost:8080/user/profile?id=123
 
 - Response Details:
 
-| Parameter Name | Description | Type   | Required | Remark |
-| :------------- | :---------- | ------ | -------- | ------ |
-| message        |             | String | Yes      |        |
-| errors         |             | List   | No       |        |
+| Parameter Name | Description                                                  | Type   | Required | Remark                                                       |
+| :------------- | :----------------------------------------------------------- | ------ | -------- | ------------------------------------------------------------ |
+| message        | A brief message indicating the success or failure of the request. | String | Yes      | E.g., "success" or "fail".                                   |
+| errors         | An object containing field-specific error messages encountered during processing in case of failure. | Object | No       | Present only in error responses to detail specific issues related to input fields.Present only in error responses to detail issues. |
 
 - Sample Response Data:
 
 ```json
+{
+    "message": "invalid user id",
+    "errors": {
+        "id": "The user does not exist."
+    }
+}
+```
 
+```json
+{
+    "message": "success"
+}
 ```
 
 
@@ -311,7 +329,7 @@ GET http://localhost:8080/user/profile?id=123
 | Parameter Name | Description | Type   | Required | Remark |
 | :------------- | :---------- | ------ | -------- | ------ |
 | message        |             | String | Yes      |        |
-| errors         |             | List   | No       |        |
+| errors         |             | Object | No       |        |
 
 - Sample Response Data:
 
@@ -358,7 +376,7 @@ GET http://localhost:8080/user/profile?id=123
 | Parameter Name | Description | Type   | Required | Remark |
 | :------------- | :---------- | ------ | -------- | ------ |
 | message        |             | String | Yes      |        |
-| errors         |             | List   | No       |        |
+| errors         |             | Object | No       |        |
 
 - Sample Response Data:
 

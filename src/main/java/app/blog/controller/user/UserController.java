@@ -5,7 +5,10 @@ import app.blog.model.ErrorResponse;
 import app.blog.model.GenericResponse;
 import app.blog.model.user.User;
 import app.blog.model.user.dto.GetUserProfileResponse;
+import app.blog.model.user.dto.UpdateUserInfoRequest;
+import app.blog.service.auth.AuthService;
 import app.blog.service.user.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,15 +24,46 @@ public class UserController implements BaseController<User> {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private AuthService authService;
+
     @Override
     @PostMapping
     public ResponseEntity<Map> save(User user) {
         return null;
     }
 
-    @PutMapping
-    public ResponseEntity<?> update(){
-        return null;
+    @PutMapping("/profile")
+    public ResponseEntity<?> update(@Valid @RequestBody UpdateUserInfoRequest request){
+        System.out.println(request.getImageUrl());
+        User user = userService.findUserById(request.getId());
+        GenericResponse genericResponse = new GenericResponse();
+
+        if(user == null){
+            String message = "invalid user id";
+            String fieldName = "id";
+            String fieldMessage = "The user does not exist.";
+            Map<String, String> errors = new HashMap<>();
+            errors.put(fieldName, fieldMessage);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse(message, errors));
+        }
+
+        User foundUser = (User) authService.loadUserByUsername(request.getEmail());
+        if(foundUser != null){
+            String message = "duplicate email";
+            String fieldName = "email";
+            String fieldMessage = "Email has been used";
+            Map<String, String> errors = new HashMap<>();
+            errors.put(fieldName, fieldMessage);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse(message, errors));
+        }
+        user.setEmail(request.getEmail());
+        user.setImageUrl(request.getImageUrl());
+        user.setUsername(request.getUsername());
+        userService.save(user);
+        genericResponse.setMessage("success");
+        genericResponse.setData(null);
+        return ResponseEntity.status(HttpStatus.OK).body(genericResponse);
     }
 
     @GetMapping("/profile")
@@ -53,7 +87,7 @@ public class UserController implements BaseController<User> {
             if (user != null) {
                 getUserProfileResponse.setEmail(user.getEmail());
                 getUserProfileResponse.setImageUrl(user.getImageUrl());
-                getUserProfileResponse.setName(user.getName());
+                getUserProfileResponse.setUsername(user.getUsername());
                 genericResponse.setMessage("success");
                 genericResponse.setData(getUserProfileResponse);
                 return ResponseEntity.status(HttpStatus.OK).body(genericResponse);

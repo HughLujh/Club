@@ -21,7 +21,7 @@ import java.util.Collection;
 public class User extends BaseEntity implements UserDetails {
     private String email;
 
-    private String name;
+    private String username;
 
     private String password;
 
@@ -33,9 +33,9 @@ public class User extends BaseEntity implements UserDetails {
         return null;
     }
 
-    public User(String email, String name, String password) {
+    public User(String email, String username, String password) {
         this.email = email;
-        this.name = name;
+        this.username = username;
         this.password = password;
     }
 

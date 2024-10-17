@@ -1,7 +1,8 @@
-package app.blog.service.contact;
+package app.blog.service.contact.impl;
 
 import app.blog.config.property.EmailProperty;
 import app.blog.model.contact.Contact;
+import app.blog.service.contact.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
@@ -13,7 +14,7 @@ import java.util.Map;
 import java.util.StringJoiner;
 
 @Service
-public class EmailServiceImpl implements EmailService<Contact>{
+public class EmailServiceImpl implements EmailService<Contact> {
     @Autowired
     private JavaMailSender mailSender;
 
