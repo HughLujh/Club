@@ -1,13 +1,19 @@
-spring :
+spring:
   config:
     import: application-secrets.yml
-  datasource :
-    url : postgres://default:XD4JUPFsk6rz@ep-soft-lab-a4ggrld1-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require
-    hikari :
-      minimumIdle : 20
-      maximumPoolSize : 30
-      connectionTimeout : 5000
+
+  datasource:
+    url: jdbc:postgresql://ep-soft-lab-a4ggrld1-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require
+    hikari:
+      minimumIdle: 20
+      maximumPoolSize: 30
+      connectionTimeout: 5000
     username: default
     password: XD4JUPFsk6rz
-baseurl : http://localhost:8080
-redirectUri : http://localhost:8080
+
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
