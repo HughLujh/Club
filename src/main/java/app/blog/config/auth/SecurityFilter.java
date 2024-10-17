@@ -1,6 +1,6 @@
 package app.blog.config.auth;
 
-import app.blog.repository.UserRepository;
+import app.blog.repository.user.UserRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

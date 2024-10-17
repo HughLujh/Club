@@ -1,4 +1,4 @@
-package app.blog.repository;
+package app.blog.repository.user;
 
 import app.blog.model.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;

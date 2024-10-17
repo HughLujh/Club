@@ -45,25 +45,33 @@ public class UserController implements BaseController<User> {
             errors.put(fieldName, fieldMessage);
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse(message,errors));
         }
+        try {
+            Long userID = Long.valueOf(Integer.valueOf(idParam));
+            User user = userService.findUserById(userID);
+            GetUserProfileResponse getUserProfileResponse = new GetUserProfileResponse();
 
-        Long userID = Long.valueOf(Integer.valueOf(idParam));
-        User user = userService.findUserById(userID);
-        GetUserProfileResponse getUserProfileResponse = new GetUserProfileResponse();
-
-        if (user != null) {
-            getUserProfileResponse.setEmail(user.getEmail());
-            getUserProfileResponse.setImageUrl(user.getImageUrl());
-            getUserProfileResponse.setName(user.getName());
-            genericResponse.setMessage("success");
-            genericResponse.setData(getUserProfileResponse);
-            return ResponseEntity.status(HttpStatus.OK).body(genericResponse);
-        } else {
+            if (user != null) {
+                getUserProfileResponse.setEmail(user.getEmail());
+                getUserProfileResponse.setImageUrl(user.getImageUrl());
+                getUserProfileResponse.setName(user.getName());
+                genericResponse.setMessage("success");
+                genericResponse.setData(getUserProfileResponse);
+                return ResponseEntity.status(HttpStatus.OK).body(genericResponse);
+            } else {
+                String message = "invalid user id";
+                String fieldName = "id";
+                String fieldMessage = "The user does not exist.";
+                Map<String, String> errors = new HashMap<>();
+                errors.put(fieldName, fieldMessage);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse(message, errors));
+            }
+        }catch (NumberFormatException e){
             String message = "invalid user id";
             String fieldName = "id";
-            String fieldMessage = "The user does not exist.";
-            Map<String,String> errors = new HashMap<>();
+            String fieldMessage = "The user ID must be a valid number";
+            Map<String, String> errors = new HashMap<>();
             errors.put(fieldName, fieldMessage);
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse(message,errors));
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse(message, errors));
         }
     }
 
