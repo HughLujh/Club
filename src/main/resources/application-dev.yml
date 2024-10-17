@@ -1,13 +1,43 @@
-spring :
+spring:
   config:
     import: application-secrets.yml
-  datasource :
-    url : jdbc:postgresql://localhost:5432/blog
-    hikari :
-      minimumIdle : 20
-      maximumPoolSize : 30
-      connectionTimeout : 5000
+  datasource:
+    url: jdbc:postgresql://localhost:5432/blog
+    hikari:
+      minimumIdle: 20
+      maximumPoolSize: 30
+      connectionTimeout: 5000
     username: ${spring.database.username}
     password: ${spring.database.password}
-baseurl : http://localhost:8080
-redirectUri : http://localhost:8080
+  jwt:
+    token:
+      secret-key: secret
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${spring.mail.smtp.username}
+    password: ${spring.mail.smtp.password}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  email:
+    classifications:
+      tech: ${spring.email.classifications.tech_email}
+      general: ${spring.email.classifications.general_email}
+      support: ${spring.email.classifications.support_email}
+
+baseurl: http://localhost:8080
+redirectUri: http://localhost:8080
