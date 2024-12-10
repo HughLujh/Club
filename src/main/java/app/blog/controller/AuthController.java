@@ -74,7 +74,7 @@ public class AuthController {
             var usernamePassword = new UsernamePasswordAuthenticationToken(data.getEmail(), data.getPassword());
             var authUser = authenticationManager.authenticate(usernamePassword);
             var accessToken = tokenService.generateAccessToken((User) authUser.getPrincipal());
-            String signInMessageFormat = "successfully signed in";
+            String signInMessageFormat = "Successfully signed in";
             return ResponseEntity.status(HttpStatus.OK).body(new SignInResponse(signInMessageFormat, accessToken));
         }else{
             String message = "Invalid password";
