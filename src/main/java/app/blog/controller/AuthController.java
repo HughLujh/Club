@@ -49,7 +49,7 @@ public class AuthController {
                     "email");
         }
         authService.save(user);
-        String successMessage = "Successfully registered as a personal account";
+        String successMessage = "Successfully registered as a new user";
 
         return ResponseEntity.status(HttpStatus.OK).body((new GenericResponse<>(successMessage)));
 
