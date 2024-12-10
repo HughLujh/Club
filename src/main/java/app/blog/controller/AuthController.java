@@ -51,7 +51,7 @@ public class AuthController {
         authService.save(user);
         String successMessage = "successfully registered as a personal account";
 
-        return ResponseEntity.status(HttpStatus.OK).body((new GenericResponse<User>(successMessage)));
+        return ResponseEntity.status(HttpStatus.OK).body((new GenericResponse<>(successMessage)));
 
     }
 
@@ -77,7 +77,7 @@ public class AuthController {
             String signInMessageFormat = "successfully signed in";
             return ResponseEntity.status(HttpStatus.OK).body(new SignInResponse(signInMessageFormat, accessToken));
         }else{
-            String message = "Invalid email or password";
+            String message = "Invalid password";
             String fieldName = "password";
             String fieldMessage = "wrong password";
             Map <String,String> errors = new HashMap<>();
