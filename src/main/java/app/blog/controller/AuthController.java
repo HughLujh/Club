@@ -44,12 +44,12 @@ public class AuthController {
         }
         User user =  new User( data.getEmail(),data.getName(), data.getPassword());
         if(authService.isUserExist(user.getEmail())){
-            throw new DuplicateObjectExceptions("email has been registered",
+            throw new DuplicateObjectExceptions("Email has been registered",
                     "invalid request", HttpStatus.BAD_REQUEST,
                     "email");
         }
         authService.save(user);
-        String successMessage = "successfully registered as a personal account";
+        String successMessage = "Successfully registered as a personal account";
 
         return ResponseEntity.status(HttpStatus.OK).body((new GenericResponse<>(successMessage)));
 
@@ -65,7 +65,7 @@ public class AuthController {
         if(user == null){
             String message = "invalid email";
             String fieldName = "email";
-            String fieldMessage = "user with this email doesn't exist or the email is invalid";
+            String fieldMessage = "User with this email doesn't exist or the email is invalid";
             Map<String,String> errors = new HashMap<>();
             errors.put(fieldName, fieldMessage);
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse(message,errors));
@@ -79,7 +79,7 @@ public class AuthController {
         }else{
             String message = "Invalid password";
             String fieldName = "password";
-            String fieldMessage = "wrong password";
+            String fieldMessage = "Wrong password";
             Map <String,String> errors = new HashMap<>();
             errors.put(fieldName, fieldMessage);
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new ErrorResponse(message,errors));
