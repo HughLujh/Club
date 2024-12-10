@@ -79,7 +79,7 @@ public class AuthController {
         }else{
             String message = "Invalid password";
             String fieldName = "password";
-            String fieldMessage = "Wrong password";
+            String fieldMessage = "wrong password";
             Map <String,String> errors = new HashMap<>();
             errors.put(fieldName, fieldMessage);
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new ErrorResponse(message,errors));
