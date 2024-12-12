@@ -4,6 +4,7 @@ import app.blog.model.base.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -17,6 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Table(name = "users")
+@Builder
 public class User extends BaseEntity implements UserDetails {
     private String email;
 

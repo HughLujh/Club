@@ -11,6 +11,7 @@ import jakarta.validation.constraints.Size;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class SignUpRequest {
     @NotBlank(message="This field should not be empty.")
     @Size(max = 50)
