@@ -61,7 +61,7 @@ public class AuthController {
             throw new BadRequestException("Request body is missing", "invalid request", HttpStatus.BAD_REQUEST,
                     "email and password");
         }
-        User user = (User) authService.loadUserByUsername(data.getEmail());
+        User user = authService.findByEmail(data.getEmail());
         if(user == null){
             String message = "invalid email";
             String fieldName = "email";

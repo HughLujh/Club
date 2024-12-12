@@ -21,6 +21,7 @@ app/blog/model/exceptions/GenericException.class
 app/blog/model/user/dto/SignInRequest.class
 app/blog/model/user/User.class
 app/blog/config/auth/SecurityFilter.class
+app/blog/model/user/dto/SignUpRequest$SignUpRequestBuilder.class
 app/blog/model/user/dto/SignUpRequest.class
 app/blog/config/auth/TokenProvider.class
 app/blog/model/user/User$UserBuilder.class

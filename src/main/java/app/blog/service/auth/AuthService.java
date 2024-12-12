@@ -32,6 +32,10 @@ public class AuthService implements UserDetailsService {
         return (User) userRepository.findByEmail(email);
     }
 
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
     public Boolean isPasswordMatched(String password, String currentPassword){
         return passwordEncoder.matches(password, currentPassword);
     }
