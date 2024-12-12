@@ -13,7 +13,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class userServiceTests {
+public class UserServiceTests {
     @Mock
     private UserRepository userRepository;
 

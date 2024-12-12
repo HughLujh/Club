@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
-public class userRepositoryTests {
+public class UserRepositoryTests {
     @Autowired
     private UserRepository userRepository;
 

@@ -1,3 +1,3 @@
 app/blog/BlogApplicationTests.class
-app/blog/unitTesting/serviceTests/userServiceTests.class
-app/blog/unitTesting/repositoryTests/userRepositoryTests.class
+app/blog/unitTesting/repositoryTests/UserRepositoryTests.class
+app/blog/unitTesting/serviceTests/UserServiceTests.class
