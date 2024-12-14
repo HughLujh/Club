@@ -43,7 +43,7 @@ public class AuthController {
                     "email, name and password");
         }
         User user =  new User( data.getEmail(),data.getName(), data.getPassword());
-        if(authService.isUserExist(user.getEmail())){
+        if(authService.findByEmail(user.getEmail()) != null){
             throw new DuplicateObjectExceptions("Email has been registered",
                     "invalid request", HttpStatus.BAD_REQUEST,
                     "email");

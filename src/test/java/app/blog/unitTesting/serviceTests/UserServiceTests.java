@@ -9,7 +9,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -24,25 +26,29 @@ public class UserServiceTests {
     private static final String TEST_EMAIL = "testservice1@example.com";
     private static final String TEST_PASSWORD = "Password1234!";
     private static final String TEST_IMAGEURL = "TestImageUrl";
-    private User user;
+    private User testUser;
 
     @BeforeEach
     void setUp() {
-        // Create a User object with test data before running the tests
-        user = User.builder().name(TEST_NAME).email(TEST_EMAIL).password(TEST_PASSWORD).imageUrl(TEST_IMAGEURL).build();
+        testUser = User.builder().name(TEST_NAME).email(TEST_EMAIL).password(TEST_PASSWORD).imageUrl(TEST_IMAGEURL).build();
     }
 
     @Test
-    public void registerUserSuccess() {
-        // Mock the userRepository.findByEmail method to return null,
-        // simulating that no user exists with the provided email
-        lenient().when(userRepository.findByEmail(user.getEmail())).thenReturn(null);
+    public void saveUserSuccess() {
+        String encodedPassword = new BCryptPasswordEncoder().encode(TEST_PASSWORD);
 
-        // Call the registerUser method on the userService with the user
-        authService.save(user);
+        authService.save(testUser);
 
-        // Verify that the save method was called exactly once with any User object
         verify(userRepository, times(1)).save(any(User.class));
 
+    }
+
+    @Test
+    public void loadUserByUsernameShouldReturnUser() {
+        when(userRepository.findByEmail(testUser.getEmail())).thenReturn(testUser);
+
+        User foundUser = authService.loadUserByUsername(testUser.getEmail());
+
+        assertNotNull(foundUser);
     }
 }

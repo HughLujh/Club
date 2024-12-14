@@ -3,7 +3,6 @@ package app.blog.service.auth;
 import app.blog.model.user.User;
 import app.blog.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -23,12 +22,8 @@ public class AuthService implements UserDetailsService {
         userRepository.save(user);
     }
 
-    public Boolean isUserExist(String email){
-        return userRepository.findByEmail(email)!=null;
-    }
-
     @Override
-    public UserDetails loadUserByUsername(String email) {
+    public User loadUserByUsername(String email) {
         return (User) userRepository.findByEmail(email);
     }
 
