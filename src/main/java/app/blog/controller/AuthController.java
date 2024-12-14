@@ -39,14 +39,17 @@ public class AuthController {
     @PostMapping("/sign-up")
     public ResponseEntity<?> signUp(@RequestBody(required = false) @Valid SignUpRequest data) throws Exception {
         if (data == null) {
-            throw new BadRequestException("Request body is missing", "invalid request", HttpStatus.BAD_REQUEST,
-                    "email, name and password");
+            String errorMessage = "invalid request";
+            Map<String, String> errors = new HashMap<>();
+            errors.put("data", "Request body cannot be empty");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse(errorMessage, errors));
         }
         User user =  new User( data.getEmail(),data.getName(), data.getPassword());
         if(authService.findByEmail(user.getEmail()) != null){
-            throw new DuplicateObjectExceptions("Email has been registered",
-                    "invalid request", HttpStatus.BAD_REQUEST,
-                    "email");
+            String errorMessage = "invalid request";
+            Map<String, String> errors = new HashMap<>();
+            errors.put("email", "Email has been registered");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse(errorMessage, errors));
         }
         authService.save(user);
         String successMessage = "Successfully registered as a new user";
