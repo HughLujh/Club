@@ -15,6 +15,7 @@ public class UserRepositoryTests {
     @Autowired
     private UserRepository userRepository;
 
+    // Test case for saving a user in the repository
     @Test
     @Transactional
     @Rollback
@@ -32,19 +33,13 @@ public class UserRepositoryTests {
 
         User savedUser = userRepository.save(user);
 
-        // Assert that the retrieved user is not null
         assertNotNull(savedUser);
-
-        // Assert that the retrieved user id is not null
         assertNotNull(savedUser.getId());
-
-        // Assert that the retrieved user's name matches the expected name
         assertEquals(name, savedUser.getName());
-
-        // Assert that the retrieved user's email matches the expected email
         assertEquals(email, savedUser.getEmail());
     }
 
+    // Test case for finding a user by email - user exists
     @Test
     @Transactional
     @Rollback
@@ -62,27 +57,79 @@ public class UserRepositoryTests {
 
         userRepository.save(user);
 
-        // Retrieve the user from the database using findByEmail
         User foundUser = userRepository.findByEmail(email);
 
-        // Assert that the retrieved user is not null
         assertNotNull(foundUser);
-
-        // Assert that the retrieved user's email matches the expected email
         assertEquals(email, foundUser.getEmail());
-
-        // Assert that the retrieved user's name matches the expected name
         assertEquals(name, foundUser.getName());
     }
 
+    // Test case for finding a user by email - user does not exist
     @Test
     @Transactional
     @Rollback
     public void testFindByEmailUserNotFound() {
-        // Find an non existent user
-        User foundUser = userRepository.findByEmail("non.existent@example.com");
+        String email = "non.existent@example.com";
 
-        // Assert that the retrieved user is null
+        User foundUser = userRepository.findByEmail(email);
+
         assertNull(foundUser);
+    }
+
+    // Test case for finding a user by email - user does not exist
+    @Test
+    @Transactional
+    @Rollback
+    public void testFindByEmailCaseSensitivity() {
+        String name = "test1";
+        String email = "test1@example.com";
+        String password = "Password1234!";
+        String imageUrl = "testUrl1";
+        User user = User.builder()
+                .name(name)
+                .email(email)
+                .password(password)
+                .imageUrl(imageUrl)
+                .build();
+
+        userRepository.save(user);
+
+        User foundUserUppercase = userRepository.findByEmail("TEST1@EXAMPLE.COM");
+
+        assertNotNull(foundUserUppercase);
+        assertEquals(email, foundUserUppercase.getEmail());
+    }
+
+    // Test case for ensuring saving a user works after deleting a user
+    @Test
+    @Transactional
+    @Rollback
+    public void testDeleteAndSaveUser() {
+        String name = "test1";
+        String email = "test1@example.com";
+        String password = "Password1234!";
+        String imageUrl = "testUrl1";
+        User user = User.builder()
+                .name(name)
+                .email(email)
+                .password(password)
+                .imageUrl(imageUrl)
+                .build();
+
+        userRepository.save(user);
+
+        userRepository.delete(user);
+
+        User newUser = User.builder()
+                .name("newName")
+                .email(email)
+                .password("newPassword")
+                .imageUrl("newImageUrl")
+                .build();
+        User savedUser = userRepository.save(newUser);
+
+        assertNotNull(savedUser);
+        assertEquals(email, savedUser.getEmail());
+        assertEquals("newName", savedUser.getName());
     }
 }

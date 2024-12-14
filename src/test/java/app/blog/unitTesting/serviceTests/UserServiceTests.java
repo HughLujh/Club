@@ -33,8 +33,9 @@ public class UserServiceTests {
         testUser = User.builder().name(TEST_NAME).email(TEST_EMAIL).password(TEST_PASSWORD).imageUrl(TEST_IMAGEURL).build();
     }
 
+    // test save user service
     @Test
-    public void saveUserSuccess() {
+    public void testSaveUserSuccess() {
         String encodedPassword = new BCryptPasswordEncoder().encode(TEST_PASSWORD);
 
         authService.save(testUser);
@@ -44,7 +45,7 @@ public class UserServiceTests {
     }
 
     @Test
-    public void loadUserByUsernameShouldReturnUser() {
+    public void testLoadUserByUsernameShouldReturnUser() {
         when(userRepository.findByEmail(testUser.getEmail())).thenReturn(testUser);
 
         User foundUser = authService.loadUserByUsername(testUser.getEmail());
