@@ -77,8 +77,5 @@ public class UserSignUpControllerTests {
                         .content("{}"))
                 .andDo(print())
                 .andExpect(status().isBadRequest());
-//                .andExpect(jsonPath("$.errors.data").value("Request body cannot be empty"))
-//                .andExpect(jsonPath("$.message").value("invalid request"));
     }
-
 }
