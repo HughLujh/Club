@@ -75,7 +75,6 @@ public class UserSignUpControllerTests {
         mockMvc.perform(post("/sign-up")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{}"))
-                .andDo(print())
                 .andExpect(status().isBadRequest());
     }
 }
