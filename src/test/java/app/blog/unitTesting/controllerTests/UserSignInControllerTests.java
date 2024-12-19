@@ -107,7 +107,7 @@ public class UserSignInControllerTests {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"email\":\"test@example.com\", \"password\":\"WrongPassword\"}"))
                 .andExpect(status().isUnauthorized())
-                .andExpect(jsonPath("$.message").value("Invalid password"))
+                .andExpect(jsonPath("$.message").value("invalid password"))
                 .andExpect(jsonPath("$.errors.password").value("wrong password"));
 
         verify(authService, times(1)).findByEmail(signInRequest.getEmail());
