@@ -3,8 +3,6 @@ package app.blog.controller;
 import app.blog.config.auth.TokenProvider;
 import app.blog.model.ErrorResponse;
 import app.blog.model.GenericResponse;
-import app.blog.model.exceptions.BadRequestException;
-import app.blog.model.exceptions.DuplicateObjectExceptions;
 import app.blog.model.user.User;
 import app.blog.model.user.dto.SignInRequest;
 import app.blog.model.user.dto.SignInResponse;
@@ -41,7 +39,7 @@ public class AuthController {
         if (data == null) {
             String errorMessage = "invalid request";
             Map<String, String> errors = new HashMap<>();
-            errors.put("data", "Request body cannot be empty");
+            errors.put("data", "Email, name, and password can not be empty");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse(errorMessage, errors));
         }
         User user =  new User( data.getEmail(),data.getName(), data.getPassword());
@@ -61,8 +59,10 @@ public class AuthController {
     @PostMapping("/sign-in")
     public ResponseEntity<?> signIn(@RequestBody(required = false) @Valid SignInRequest data) throws Exception {
         if (data == null) {
-            throw new BadRequestException("Request body is missing", "invalid request", HttpStatus.BAD_REQUEST,
-                    "email and password");
+            String errorMessage = "invalid request";
+            Map<String, String> errors = new HashMap<>();
+            errors.put("data", "Email and password can not be empty");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse(errorMessage, errors));
         }
         User user = authService.findByEmail(data.getEmail());
         if(user == null){
@@ -80,7 +80,7 @@ public class AuthController {
             String signInMessageFormat = "Successfully signed in";
             return ResponseEntity.status(HttpStatus.OK).body(new SignInResponse(signInMessageFormat, accessToken));
         }else{
-            String message = "Invalid password";
+            String message = "invalid password";
             String fieldName = "password";
             String fieldMessage = "wrong password";
             Map <String,String> errors = new HashMap<>();
